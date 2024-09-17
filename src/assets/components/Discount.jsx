@@ -1,11 +1,15 @@
 import React, { useContext } from "react";
 import { DataContext } from "../pages/DataContext";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import StarRating from "./StarRating";
 
 function Discount() {
   const Data = useContext(DataContext);
   const { addToCart } = useContext(DataContext);
+  const notify = () => toast("Item Added!");
 
   // Filter products
   const beauty = Data.products
@@ -68,6 +72,10 @@ function Discount() {
               >
                 +
               </button>
+              <div>
+                <button onClick={notify}>Notify!</button>
+                <ToastContainer />
+              </div>
             </div>
           );
         })}
