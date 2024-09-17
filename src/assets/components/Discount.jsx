@@ -9,9 +9,7 @@ import StarRating from "./StarRating";
 function Discount() {
   const Data = useContext(DataContext);
   const { addToCart } = useContext(DataContext);
-  const notify = () => toast("Item Added!");
 
-  // Filter products
   const beauty = Data.products
     .filter((item) => item.category === "beauty")
     .slice(0, 3);
@@ -59,27 +57,34 @@ function Discount() {
               <span className="text-xl px-3 my-3">${item.price}</span>
 
               <button
-                onClick={() =>
+                onClick={() => {
                   addToCart({
                     id: item.id,
                     quantity: 1,
                     title: item.title,
                     thumbnail: item.thumbnail,
                     price: item.price,
-                  })
-                }
+                  });
+                  toast.success(`${item.title} added to cart!`, {
+                    position: "top-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  });
+                }}
                 className="w-12 h-12 rounded-full bg-white shadow-md text-black text-2xl hover:bg-[rgb(38,64,87)] hover:text-white transition duration-300 ease-in-out absolute bottom-2 right-2 flex items-center justify-center"
               >
                 +
               </button>
-              <div>
-                <button onClick={notify}>Notify!</button>
-                <ToastContainer />
-              </div>
             </div>
           );
         })}
       </div>
+
+      <ToastContainer limit={5} />
     </div>
   );
 }
