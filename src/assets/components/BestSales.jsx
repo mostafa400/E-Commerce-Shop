@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import StarRating from "./StarRating";
 import { DataContext } from "../pages/DataContext";
 
 function BestSales() {
   const Data = useContext(DataContext);
+  const { addToCart } = useContext(DataContext);
   const beauty = Data.products
     .filter((item) => item.category === "beauty")
     .slice(0, 3);
@@ -15,6 +16,16 @@ function BestSales() {
   const furniture = Data.products
     .filter((items) => items.category === "furniture")
     .slice(0, 4);
+
+  const notify = (item) =>
+    toast(`${item.title} added to cart!`, {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
 
   const filteredProducts = [...fragrances, ...furniture, ...beauty];
 
@@ -46,16 +57,7 @@ function BestSales() {
                   thumbnail: item.thumbnail,
                   price: item.price,
                 });
-                toast.success(`${item.title} added to cart!`, {
-                  position: "top-right",
-                  autoClose: 2000,
-                  hideProgressBar: false,
-
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                });
+                notify(item);
               }}
               className="w-12 h-12 rounded-full bg-white shadow-md text-black text-2xl hover:bg-[rgb(38,64,87)] hover:text-white transition duration-300 ease-in-out absolute bottom-2 right-2 flex items-center justify-center"
             >
@@ -64,7 +66,6 @@ function BestSales() {
           </div>
         ))}
       </div>
-      <ToastContainer limit={5} />
     </div>
   );
 }

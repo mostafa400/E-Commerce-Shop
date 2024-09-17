@@ -27,6 +27,7 @@ function Shop() {
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
   };
+
   if (loading)
     return (
       <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-75">
@@ -48,7 +49,7 @@ function Shop() {
         </div>
       </div>
 
-      <div className=" flex justify-center items-center mt-10 space-x-4">
+      <div className="  flex  md:flex-row flex-col-reverse gap-5 justify-center items-center mt-10 space-x-4">
         <Menu as="div" className="relative">
           <div>
             <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-[#0f3460] px-4 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-[#0f3460] focus:ring-4 focus:outline-none focus:ring-[#0f3460]">

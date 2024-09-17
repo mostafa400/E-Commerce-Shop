@@ -13,8 +13,6 @@ export const DataProvider = ({ children }) => {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
-  const [limit, setLimit] = useState(30);
-
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);

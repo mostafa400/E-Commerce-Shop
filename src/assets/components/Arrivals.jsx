@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 import StarRating from "./StarRating";
 import { DataContext } from "../pages/DataContext";
@@ -20,6 +19,16 @@ function Arrivals() {
     .slice(0, 4);
 
   const filteredProducts = [...furniture, ...beauty, ...fragrances];
+
+  const notify = (item) =>
+    toast(`${item.title} added to cart!`, {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
 
   return (
     <div className="flex flex-col justify-center items-center relative ">
@@ -50,15 +59,7 @@ function Arrivals() {
                   thumbnail: item.thumbnail,
                   price: item.price,
                 });
-                toast.success(`${item.title} added to cart!`, {
-                  position: "top-right",
-                  autoClose: 2000,
-                  hideProgressBar: false,
-                  closeOnClick: true,
-                  pauseOnHover: true,
-                  draggable: true,
-                  progress: undefined,
-                });
+                notify(item);
               }}
               className="w-12 h-12 rounded-full bg-white shadow-md text-black text-2xl hover:bg-[rgb(38,64,87)] hover:text-white transition duration-300 ease-in-out absolute bottom-2 right-2 flex items-center justify-center"
             >
@@ -67,8 +68,6 @@ function Arrivals() {
           </div>
         ))}
       </div>
-
-      <ToastContainer limit={5} />
     </div>
   );
 }

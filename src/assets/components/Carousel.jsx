@@ -29,12 +29,12 @@ function Carousel() {
   const currentData = Data[currentSlide];
 
   return (
-    <div className=" lg:h-[560px] md:h-[420px] h-[360px]  w-full mt-10  flex  items-center relative bg-slate-100  group overflow-hidden ">
-      <div className="lg:w-1/2 lg:p-20 lg:ml-60  w-1/2 ml-20 pt-20 ">
-        <h1 className="lg:text-6xl md:text-4xl text-3xl ">
+    <div className=" lg:h-[560px] md:h-[420px] h-screen  w-full mt-10 md:flex-row flex  flex-col items-center relative bg-slate-100  group overflow-hidden ">
+      <div className="lg:w-1/2 lg:p-20 lg:ml-60  md:w-1/2 md:ml-20 ml-5 md:text-left text-center pt-20 ">
+        <h1 className="lg:text-6xl md:text-4xl text-3xl font-bold ">
           {currentData.headline}
         </h1>
-        <p className="lg-text-2xl md:text-2xl  mt-6 text-xl">
+        <p className="lg-text-2xl md:text-2xl md:p-0 p-3 md:mt-6 mt-3 text-xl">
           {currentData.paragraph}
         </p>
         <Link to="/shop">
