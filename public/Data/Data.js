@@ -2,7 +2,7 @@ const CombinedData = {
   mainData: [
     {
       image: {
-        src: "../../public/images/wireless-01.png",
+        src: "./public/images/wireless-01.png",
       },
       headline: "50% off your first purchase",
       paragraph:
