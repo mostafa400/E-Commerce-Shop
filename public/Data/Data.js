@@ -11,7 +11,7 @@ const CombinedData = {
     },
     {
       image: {
-        src: "../../public/images/watch-06.png",
+        src: "./public/images/watch-06.png",
       },
       headline: "Smart Watches for You",
       paragraph:
@@ -20,7 +20,7 @@ const CombinedData = {
     },
     {
       image: {
-        src: "../../public/images/hero-img.png",
+        src: "./public/images/hero-img.png",
       },
       headline: "Experience the Future.",
       paragraph:
@@ -29,7 +29,7 @@ const CombinedData = {
     },
     {
       image: {
-        src: "../../public/images/phone-08.png",
+        src: "./public/images/phone-08.png",
       },
       headline: "Unlock the Power of Mobile",
       paragraph:
