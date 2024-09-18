@@ -45,7 +45,7 @@ function Carousel() {
       </div>
       <div
         style={{ backgroundImage: `url(${currentData.image.src})` }}
-        className="lg:w-1/4 lg:h-full md:w-1/4 md:h-full w-1/2 h-full rounded-2xl bg-center bg-cover duration-500 "
+        className="lg:w-1/4 lg:h-full md:w-1/4 md:h-full w-1/2 h-full rounded-2xl bg-center bg-cover duration-500  "
       ></div>
       <div>
         <IoArrowForwardCircle
