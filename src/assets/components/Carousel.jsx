@@ -11,7 +11,7 @@ const carouselData = [
     button: "Shop Now",
   },
   {
-    image: "public/Images/watch-06.png",
+    image: " public/Images/watch-06.png",
     headline: "Smart Watches for You",
     paragraph:
       "Stay connected and track your fitness with our latest collection of cutting-edge smartwatches. Enhance your lifestyle today!",
@@ -72,10 +72,11 @@ function Carousel() {
           </button>
         </Link>
       </div>
-      <div
-        style={{ backgroundImage: `url(${currentData.image})` }}
+      <img
+        src={currentData.image}
+        alt="image"
         className="lg:w-1/4 lg:h-full md:w-1/4 md:h-full w-1/2 h-full rounded-2xl bg-center bg-cover duration-500"
-      ></div>
+      ></img>
       <div>
         <IoArrowForwardCircle
           onClick={nextSlide}
