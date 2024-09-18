@@ -4,28 +4,28 @@ import { Link } from "react-router-dom";
 
 const carouselData = [
   {
-    image: "public/images/wireless-01.png",
+    image: "public/Images/wireless-01.png",
     headline: "50% off your first purchase",
     paragraph:
       "All you have to do is simply log in to your account and you'll get 50% off your first shipping for free, no matter where you are!",
     button: "Shop Now",
   },
   {
-    image: "public/images/watch-06.png",
+    image: "public/Images/watch-06.png",
     headline: "Smart Watches for You",
     paragraph:
       "Stay connected and track your fitness with our latest collection of cutting-edge smartwatches. Enhance your lifestyle today!",
     button: "Shop Now",
   },
   {
-    image: "public/images/single-sofa-07.png",
+    image: "public/Images/single-sofa-07.png",
     headline: "Experience the Future",
     paragraph:
       "Discover our range of innovative gadgets designed to make your life easier, more efficient, and more enjoyable.",
     button: "Shop Now",
   },
   {
-    image: "public/images/phone-08.png",
+    image: "public/Images/phone-08.png",
     headline: "Unlock the Power of Mobile",
     paragraph:
       "Explore our selection of state-of-the-art smartphones with advanced features to keep you connected and productive on the go.",
