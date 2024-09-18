@@ -2,7 +2,7 @@ const CombinedData = {
   mainData: [
     {
       image: {
-        src: "../../public/images/wireless-01.png",
+        src: "./images/wireless-01.png",
       },
       headline: "50% off your first purchase",
       paragraph:
@@ -11,25 +11,25 @@ const CombinedData = {
     },
     {
       image: {
-        src: "../../public/images/watch-06.png",
+        src: "./images/watch-06.png",
       },
-      headline: "Smart Watches for Smart Living",
+      headline: "Smart Watches for You",
       paragraph:
         "Stay connected and track your fitness with our latest collection of cutting-edge smartwatches. Enhance your lifestyle today!",
       button: "Shop Now",
     },
     {
       image: {
-        src: "../../public/images/hero-img.png",
+        src: "./images/single-sofa-07.png",
       },
-      headline: "Experience the Future of Tech",
+      headline: "Experience the Future.",
       paragraph:
         "Discover our range of innovative gadgets designed to make your life easier, more efficient, and more enjoyable.",
       button: "Shop Now",
     },
     {
       image: {
-        src: "../../public/images/phone-08.png",
+        src: "./images/phone-08.png",
       },
       headline: "Unlock the Power of Mobile",
       paragraph:
