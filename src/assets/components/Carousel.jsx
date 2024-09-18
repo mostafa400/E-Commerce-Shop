@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { IoArrowForwardCircle, IoArrowBackCircleSharp } from "react-icons/io5";
 import { useState } from "react";
-import combindData from "../../Data.js";
+import combindData from "../../Data/Data.js";
 import { Link } from "react-router-dom";
 
 function Carousel() {
