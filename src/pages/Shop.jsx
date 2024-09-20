@@ -1,8 +1,24 @@
 import React, { useState, useContext } from "react";
 import { DataContext } from "../pages/DataContext";
 import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { Atom } from "react-loading-indicators";
+
+const notify = (item) =>
+  toast(`${item.title} added to cart!`, {
+    position: "top-right",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
 
 function Shop() {
   const Data = useContext(DataContext);
@@ -49,7 +65,7 @@ function Shop() {
         </div>
       </div>
 
-      <div className="  flex  md:flex-row flex-col-reverse gap-5 justify-center items-center mt-10 space-x-4">
+      <div className="flex md:flex-row flex-col-reverse gap-5 justify-center items-center mt-10 space-x-4">
         <Menu as="div" className="relative">
           <div>
             <MenuButton className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-[#0f3460] px-4 py-2 text-sm font-semibold text-white shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-[#0f3460] focus:ring-4 focus:outline-none focus:ring-[#0f3460]">
@@ -95,23 +111,28 @@ function Shop() {
               key={index}
               className="flex flex-col gap-2 rounded border-2 shadow-md relative bg-white"
             >
-              <img
+              <LazyLoadImage
+                effect="blur"
                 src={item.thumbnail}
                 alt={item.title}
                 className="w-full p-5 border-5 rounded shadow-md"
+                wrapperProps={{
+                  style: { transitionDelay: "1s" },
+                }}
               />
               <p className="text-xl px-3">{item.title}</p>
               <span className="text-xl px-3 my-3">${item.price}</span>
               <button
-                onClick={() =>
+                onClick={() => {
                   addToCart({
                     id: item.id,
                     quantity: 1,
                     title: item.title,
                     thumbnail: item.thumbnail,
                     price: item.price,
-                  })
-                }
+                  });
+                  notify(item);
+                }}
                 className="w-12 h-12 rounded-full bg-white shadow-md text-black text-2xl hover:bg-[rgb(38,64,87)] hover:text-white transition duration-300 ease-in-out absolute bottom-2 right-2 flex items-center justify-center"
               >
                 +
@@ -120,6 +141,8 @@ function Shop() {
           ))}
         </div>
       </div>
+
+      <ToastContainer limit={3} />
     </div>
   );
 }
