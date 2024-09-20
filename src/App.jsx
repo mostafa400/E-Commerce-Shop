@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Layout from "./assets/components/Layout";
-import Home from "./assets/pages/Home";
-import Shop from "./assets/pages/Shop";
-import Cart from "./assets/pages/Cart";
-import NotFound from "./assets/pages/NotFound";
+import Layout from "./components/Layout";
+import Home from "./pages/Home";
+import Shop from "./pages/Shop";
+import Cart from "./pages/Cart";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
