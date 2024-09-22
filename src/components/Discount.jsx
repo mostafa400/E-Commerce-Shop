@@ -7,7 +7,6 @@ import "react-toastify/dist/ReactToastify.css";
 import StarRating from "./StarRating";
 
 function Discount() {
-  console.log("Discount component rendered");
   const Data = useContext(DataContext);
   const { addToCart } = useContext(DataContext);
 

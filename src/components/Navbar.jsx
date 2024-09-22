@@ -96,7 +96,7 @@ function Navbar() {
               </Link>
             </li>
             <li>
-              <Link to="/login">
+              <Link to="/signup">
                 <IoPersonCircleSharp className="text-3xl " />
               </Link>
             </li>
