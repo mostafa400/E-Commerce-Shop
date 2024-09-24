@@ -60,8 +60,8 @@ function Carousel() {
   return (
     <div className="px-3 lg:px-5 bg-slate-100 relative group ">
       <div className=" container my-0 mx-auto  ">
-        <div className=" md:h-[630px]  md:flex-row flex flex-col items-center  overflow-hidden p-5">
-          <div className="w-full lg:p-20  md:w-1/2 md:min-w-[50%] md:text-left text-center md:pt-20 pt-5">
+        <div className=" h-[640px]  md:flex-row flex flex-col items-center  overflow-hidden p-5">
+          <div className="w-full lg:p-20  md:w-1/2 md:min-w-[50%] md:text-left text-center  pt-5">
             <h1 className="lg:text-6xl md:text-4xl text-3xl font-bold">
               {currentData.headline}
             </h1>
@@ -77,7 +77,7 @@ function Carousel() {
           <img
             src={currentData.image}
             alt="image"
-            className=" md:w-1/2 w-3/4 rounded-2xl object-cover"
+            className=" md:w-1/2 w-3/4 object-cover"
           ></img>
           <div>
             <IoArrowForwardCircle

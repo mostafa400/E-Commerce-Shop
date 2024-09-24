@@ -16,30 +16,53 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!email || !password) {
+      setError("Email and password cannot be empty");
+      setSuccess("");
+      return;
+    }
+
     if (email === storedEmail && password === storedPassword) {
       setSuccess("Redirecting");
       setTimeout(() => {
         navigate("/");
+        window.location.reload();
       }, 2000);
     } else {
       setError("Invalid email or password");
       setSuccess("");
     }
   };
+
   return (
-    <section className="bg-slate-100">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen ">
-        <div className="flex flex-col rounded-lg shadow font-semibold p-6 gap-5 bg-white">
+    <section className="bg-gray-100 min-h-screen">
+      <div className="relative h-60 scroll-hidden ">
+        <img
+          className="h-full w-full object-cover"
+          src="../public/images/table.jpg"
+          alt="shop"
+        />
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+        <div className="absolute top-10 left-0 w-full h-full flex items-center justify-center">
+          <h1 className="text-white text-4xl font-bold">Login</h1>
+        </div>
+      </div>
+      <div className="flex flex-grow items-center justify-center px-6 py-8 ">
+        <div className="flex flex-col rounded-lg shadow-lg font-semibold p-6 gap-5 bg-white mt-5">
           <div className="  p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-2xl text-gray-700 ">Login</h1>
-            <form onSubmit={handleSubmit} className="space-y-4 ">
-              <label className="block text-sm font-medium leading-6 text-gray-900">
+            <h2 className="text-2xl font-bold text-gray-900 text-center mb-6">
+              Login
+            </h2>
+            <form onSubmit={handleSubmit} className="space-y-6 ">
+              <label className="block text-sm font-medium leading-6 text-gray-700">
                 Email
                 <div className="mt-2">
                   <input
-                    className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg"
+                    className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                    w-full"
                     type="email"
                     name="email"
+                    required
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
@@ -49,9 +72,11 @@ function Login() {
                 Password
                 <div className="mt-2">
                   <input
-                    className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg"
+                    className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                    w-full"
                     type="password"
                     name="password"
+                    required
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
@@ -61,8 +86,14 @@ function Login() {
               <button className="w-full bg-blue-700 hover:bg-blue-800 text-white text-sm font-medium py-2 px-4 rounded-lg">
                 Login
               </button>
-              <p>
-                Dont have an account? <Link to="/signup">Sign Up</Link>
+              <p className="text-l text-gray-600">
+                Dont have an account?{" "}
+                <Link
+                  className="font-medium text-blue-600 hover:text-blue-500"
+                  to="/signup"
+                >
+                  Sign Up
+                </Link>
               </p>
             </form>
           </div>

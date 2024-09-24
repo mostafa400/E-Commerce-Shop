@@ -12,7 +12,7 @@ function Cart() {
   } = useContext(DataContext);
 
   return (
-    <div className="mt-10 p-5 bg-slate-200 flex md:flex-row  flex-col-reverse md:items-start items-center">
+    <div className="mt-10 p-5 bg-slate-200 flex md:flex-row  flex-col-reverse md:items-start items-center overflow-scroll">
       <div className="grid gap-5 lg:w-1/2 lg:mt-10 lg:ml-24 md:w-1/2 md:ml-5 mt-10">
         {cart.length > 0 ? (
           cart.map((item) => (

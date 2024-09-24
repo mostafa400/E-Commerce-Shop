@@ -5,7 +5,7 @@ import Cards from "../components/Cards";
 import Discount from "../components/Discount";
 import Arrivals from "../components/Arrivals";
 import BestSales from "../components/BestSales";
-import { ToastContainer } from "react-toastify";
+
 import { Atom } from "react-loading-indicators";
 import { DataContext } from "./DataContext";
 
@@ -20,7 +20,6 @@ function Home() {
     );
   return (
     <div>
-      <ToastContainer limit={3} />
       <Carousel />
       <Cards />
       <Discount />

@@ -48,17 +48,31 @@ function SignUp() {
   };
 
   return (
-    <section className="bg-slate-100">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen ">
-        <div className="flex flex-col rounded-lg shadow font-semibold p-6 gap-5 bg-white">
+    <section className="bg-slate-100 min-h-screen ">
+      <div className="relative scroll-hidden ">
+        <img
+          className="h-60 w-full object-cover"
+          src="../public/images/table.jpg"
+          alt="shop"
+        />
+        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
+        <div className="absolute top-10 left-0 w-full h-full flex items-center justify-center">
+          <h1 className="text-white text-4xl font-bold">Sign Up</h1>
+        </div>
+      </div>
+      <div className="flex flex-col items-center justify-center px-6 py-8  ">
+        <div className="flex flex-col rounded-lg shadow-lg font-semibold p-6 gap-5 bg-white">
           <div className="  p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-2xl text-gray-700 ">Create an account</h1>
+            <h1 className="text-2xl text-gray-700 text-center">
+              Create an account
+            </h1>
             <form onSubmit={handleSubmit} className="space-y-4 ">
               <label className="block text-sm font-medium leading-6 text-gray-900">
                 Email
                 <div className="mt-2">
                   <input
-                    className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg"
+                    className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                    w-full"
                     type="email"
                     name="email"
                     onChange={(e) => setEmail(e.target.value)}
@@ -70,7 +84,8 @@ function SignUp() {
                 Password
                 <div className="mt-2">
                   <input
-                    className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg"
+                    className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                    w-full"
                     type="password"
                     name="password"
                     onChange={(e) => setPassword(e.target.value)}
@@ -81,7 +96,8 @@ function SignUp() {
                 Confirm Password
                 <div className="mt-2">
                   <input
-                    className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg"
+                    className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                    w-full"
                     type="password"
                     name="password"
                     onChange={(e) => setConfirmPassword(e.target.value)}
@@ -93,10 +109,15 @@ function SignUp() {
               <button className="w-full bg-blue-700 hover:bg-blue-800 text-white text-sm font-medium py-2 px-4 rounded-lg">
                 Sign Up
               </button>
-
-              <p>
-                Already have an account? <Link to="/login">Login</Link>
-              </p>
+              <div className="flex gap-3">
+                <p>Already have an account?</p>
+                <Link
+                  className="font-medium text-blue-600 hover:text-blue-500"
+                  to="/login"
+                >
+                  Login
+                </Link>
+              </div>
             </form>
           </div>
         </div>

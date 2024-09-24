@@ -1,24 +1,12 @@
 import React, { useContext } from "react";
 import { DataContext } from "../pages/DataContext";
 
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
 import StarRating from "./StarRating";
+import { Link } from "react-router-dom";
 
 function Discount() {
   const Data = useContext(DataContext);
   const { addToCart } = useContext(DataContext);
-
-  const notify = (item) =>
-    toast(`${item.title} added to cart!`, {
-      position: "top-right",
-      autoClose: 1000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
 
   const generateRandomDiscount = () => {
     const discounts = [10, 15, 20, 25, 30];
@@ -54,12 +42,13 @@ function Discount() {
               >
                 {discount}% OFF
               </div>
-
-              <img
-                src={item.thumbnail}
-                alt={item.title}
-                className="w-full p-5 border-5 rounded shadow-md "
-              />
+              <Link to={`/products/${item.id}`}>
+                <img
+                  src={item.thumbnail}
+                  alt={item.title}
+                  className="w-full p-5 border-5 rounded shadow-md "
+                />
+              </Link>
               <p className="text-xl px-3">{item.title}</p>
 
               <StarRating />
@@ -75,7 +64,6 @@ function Discount() {
                     thumbnail: item.thumbnail,
                     price: item.price,
                   });
-                  notify(item);
                 }}
                 className="w-12 h-12 rounded-full bg-white shadow-md text-black text-2xl hover:bg-[rgb(38,64,87)] hover:text-white transition duration-300 ease-in-out absolute bottom-2 right-2 flex items-center justify-center"
               >

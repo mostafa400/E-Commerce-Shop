@@ -1,12 +1,43 @@
 import React, { createContext, useState, useEffect, useMemo } from "react";
 import { Atom } from "react-loading-indicators";
+import { useLocalStorage } from "../UseLocalStorage";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const DataContext = createContext();
+
+const handleToast = (type, message) => {
+  const toastOptions = {
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+  };
+
+  if (type === "success") {
+    toast.success(message, toastOptions);
+  } else if (type === "error") {
+    toast.error(message, toastOptions);
+  }
+};
 
 export const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [storedEmail] = useLocalStorage("email", "");
+  const [storedPassword] = useLocalStorage("password", "");
+  // const [isLoggedIn, setIsLoggedIn] = useState(!!storedEmail);
+
+  // useEffect(
+  //   () => {
+  //     setIsLoggedIn(!!storedEmail);
+  //   },
+  //   [storedEmail],
+  //   setIsLoggedIn
+  // );
 
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");
@@ -68,17 +99,22 @@ export const DataProvider = ({ children }) => {
   };
 
   const addToCart = (newItem) => {
-    const existingItem = cart.find((item) => item.id === newItem.id);
-    if (existingItem) {
-      setCart(
-        cart.map((item) =>
-          item.id === newItem.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        )
-      );
+    if (storedEmail && storedPassword) {
+      const existingItem = cart.find((item) => item.id === newItem.id);
+      if (existingItem) {
+        setCart(
+          cart.map((item) =>
+            item.id === newItem.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          )
+        );
+      } else {
+        setCart([...cart, { ...newItem, quantity: 1 }]);
+      }
+      handleToast("success", `${newItem.title} added to cart!`);
     } else {
-      setCart([...cart, { ...newItem, quantity: 1 }]);
+      handleToast("error", "Please log in to add items to cart");
     }
   };
 
@@ -127,6 +163,9 @@ export const DataProvider = ({ children }) => {
       clearCart,
       removeProduct,
       itemTotal,
+      handleToast,
+      // isLoggedIn,
+      // setIsLoggedIn,
     }),
     [data, cart, loading, error]
   );
@@ -140,7 +179,10 @@ export const DataProvider = ({ children }) => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <DataContext.Provider value={contextValue}>{children}</DataContext.Provider>
+    <DataContext.Provider value={contextValue}>
+      <ToastContainer limit={3} />
+      {children}
+    </DataContext.Provider>
   );
 };
 
