@@ -1,19 +1,24 @@
-import { useParams } from "react-router-dom";
-import React, { useContext } from "react";
+import { useParams, useLocation } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
 import { DataContext } from "../pages/DataContext";
 
 function ProductsDetails() {
   const { id } = useParams();
+  const location = useLocation();
   const { products, addToCart } = useContext(DataContext);
 
   const product = products.find((item) => item.id === parseInt(id));
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
-    <div>
+    <div className="min-h-screen">
       <div className="relative ">
         <img
           className="h-60 w-full object-cover"
-          src="../public/images/table.jpg"
+          src="Images/table.jpg"
           alt={product.title}
         />
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
@@ -25,7 +30,7 @@ function ProductsDetails() {
       </div>
       <div className="container mx-auto">
         <div className="flex md:flex-row flex-col items-center gap-5 justify-center py-10">
-          <div className="w-1/4">
+          <div className="md:w-1/3">
             <img
               className="w-full object-cover"
               src={product.thumbnail}

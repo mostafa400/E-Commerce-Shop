@@ -29,15 +29,6 @@ export const DataProvider = ({ children }) => {
 
   const [storedEmail] = useLocalStorage("email", "");
   const [storedPassword] = useLocalStorage("password", "");
-  // const [isLoggedIn, setIsLoggedIn] = useState(!!storedEmail);
-
-  // useEffect(
-  //   () => {
-  //     setIsLoggedIn(!!storedEmail);
-  //   },
-  //   [storedEmail],
-  //   setIsLoggedIn
-  // );
 
   const [cart, setCart] = useState(() => {
     const savedCart = localStorage.getItem("cart");

@@ -35,15 +35,15 @@ function Login() {
   };
 
   return (
-    <section className="bg-gray-100 min-h-screen">
-      <div className="relative h-60 scroll-hidden ">
+    <section className="min-h-screen flex flex-col bg-gray-100">
+      <div className="relative h-60 scroll-hidden">
         <img
           className="h-full w-full object-cover"
-          src="../public/images/table.jpg"
-          alt="shop"
+          src="Images/table.jpg"
+          alt="Logout"
         />
-        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
-        <div className="absolute top-10 left-0 w-full h-full flex items-center justify-center">
+        <div className="absolute inset-0 bg-black opacity-50"></div>
+        <div className="absolute inset-0 flex items-center justify-center">
           <h1 className="text-white text-4xl font-bold">Login</h1>
         </div>
       </div>

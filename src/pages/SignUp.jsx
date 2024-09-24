@@ -52,7 +52,7 @@ function SignUp() {
       <div className="relative scroll-hidden ">
         <img
           className="h-60 w-full object-cover"
-          src="../public/images/table.jpg"
+          src="Images/table.jpg"
           alt="shop"
         />
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
