@@ -13,9 +13,9 @@ function Shop() {
   const { addToCart, loading } = useContext(DataContext);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-
+  // all the categories
   const categories = ["All", "beauty", "furniture", "fragrances", "groceries"];
-
+  // all the products
   const filteredProducts = Data.products
     .filter((item) => {
       const categoryMatch =
@@ -40,8 +40,8 @@ function Shop() {
     );
 
   return (
-    <div>
-      <div className="relative scroll-hidden ">
+    <div className=" overflow-hidden">
+      <div className="relative ">
         <img
           className="h-60 w-full object-cover"
           src="Images/table.jpg"
@@ -65,7 +65,10 @@ function Shop() {
             </MenuButton>
           </div>
 
-          <MenuItems className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none">
+          <MenuItems
+            className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none 
+         "
+          >
             <div className="py-1">
               {categories.map((category) => (
                 <MenuItem key={category}>

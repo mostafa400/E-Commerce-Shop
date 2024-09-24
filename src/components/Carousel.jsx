@@ -35,7 +35,7 @@ const carouselData = [
 
 function Carousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
-
+  // slide Movement
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();

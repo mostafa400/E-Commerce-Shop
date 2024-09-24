@@ -7,6 +7,7 @@ import { DataContext } from "../pages/DataContext";
 function BestSales() {
   const Data = useContext(DataContext);
   const { addToCart } = useContext(DataContext);
+  // to retrieve only 3 products
   const beauty = Data.products
     .filter((item) => item.category === "beauty")
     .slice(0, 3);
@@ -16,7 +17,7 @@ function BestSales() {
   const furniture = Data.products
     .filter((items) => items.category === "furniture")
     .slice(0, 4);
-
+  // to retrieve all filtered products
   const filteredProducts = [...fragrances, ...furniture, ...beauty];
 
   return (

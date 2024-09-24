@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export const DataContext = createContext();
 
+// control the toast notifaction
 const handleToast = (type, message) => {
   const toastOptions = {
     autoClose: 1000,
@@ -36,6 +37,7 @@ export const DataProvider = ({ children }) => {
   });
 
   useEffect(() => {
+    // to fetch the data from API
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -56,10 +58,11 @@ export const DataProvider = ({ children }) => {
     fetchData();
   }, []);
 
+  // to store cart data in local storage
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
-
+  // to fetch cart data from api
   const fetchCart = async () => {
     try {
       const response = await fetch(`https://dummyjson.com/carts`);
@@ -71,7 +74,7 @@ export const DataProvider = ({ children }) => {
       setError(error.message);
     }
   };
-
+  // sending a request for the dummy api to add items
   const addItemToCart = async (item) => {
     try {
       const response = await fetch("https://dummyjson.com/carts/add", {
@@ -88,7 +91,7 @@ export const DataProvider = ({ children }) => {
       setError(error.message);
     }
   };
-
+  // allowing the user to add to the cart only if he is logged in
   const addToCart = (newItem) => {
     if (storedEmail && storedPassword) {
       const existingItem = cart.find((item) => item.id === newItem.id);
@@ -108,34 +111,44 @@ export const DataProvider = ({ children }) => {
       handleToast("error", "Please log in to add items to cart");
     }
   };
-
+  // allowing the user to remove an item from the cart only if he is logged in
   const removeFromCart = (newItem) => {
-    const existingItem = cart.find((item) => item.id === newItem.id);
+    if (storedEmail && storedPassword) {
+      const existingItem = cart.find((item) => item.id === newItem.id);
 
-    if (existingItem.quantity === 1) {
-      setCart(cart.filter((item) => item.id !== newItem.id));
+      if (existingItem.quantity === 1) {
+        setCart(cart.filter((item) => item.id !== newItem.id));
+      } else {
+        setCart(
+          cart.map((item) =>
+            item.id === newItem.id
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
+          )
+        );
+      }
     } else {
-      setCart(
-        cart.map((item) =>
-          item.id === newItem.id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-      );
+      handleToast("error", "Please log in to remove items from cart");
     }
   };
-
+  // allowing the user to remove the product the cart only if he is logged in
   const removeProduct = (newItem) => {
-    setCart(cart.filter((item) => item.id !== newItem.id));
+    if (storedEmail && storedPassword) {
+      setCart(cart.filter((item) => item.id !== newItem.id));
+    } else {
+      handleToast("error", "Please log in to remove products from cart");
+    }
   };
-
+  // to calculate the total price of the cart
   const cartTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
   };
+
+  // to calculate the total price of the item
   const itemTotal = (item) => {
     return item.price * item.quantity;
   };
-
+  // to clear the cart
   const clearCart = () => {
     setCart([]);
   };
@@ -155,8 +168,6 @@ export const DataProvider = ({ children }) => {
       removeProduct,
       itemTotal,
       handleToast,
-      // isLoggedIn,
-      // setIsLoggedIn,
     }),
     [data, cart, loading, error]
   );

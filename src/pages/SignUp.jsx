@@ -10,6 +10,8 @@ function SignUp() {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  // to handle the form and verification
   const handleSubmit = (e) => {
     e.preventDefault();
 

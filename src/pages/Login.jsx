@@ -15,7 +15,7 @@ function Login() {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    // verfication steps
     if (!email || !password) {
       setError("Email and password cannot be empty");
       setSuccess("");

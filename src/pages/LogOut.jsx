@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 function LogOut() {
   const navigate = useNavigate();
   const [loggingOut, setLoggingOut] = useState(false);
-
+  // to remove the data in the local storage and show that he is logging out
   const handleLogout = () => {
     localStorage.removeItem("email");
     localStorage.removeItem("password");

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function Discount() {
   const Data = useContext(DataContext);
   const { addToCart } = useContext(DataContext);
-
+  // returns a random discount between 10 and 30
   const generateRandomDiscount = () => {
     const discounts = [10, 15, 20, 25, 30];
     return discounts[Math.floor(Math.random() * discounts.length)];

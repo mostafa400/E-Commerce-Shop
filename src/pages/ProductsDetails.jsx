@@ -7,8 +7,9 @@ function ProductsDetails() {
   const location = useLocation();
   const { products, addToCart } = useContext(DataContext);
 
+  // Find the product with the matching ID
   const product = products.find((item) => item.id === parseInt(id));
-
+  // Scroll to the top of the page
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);

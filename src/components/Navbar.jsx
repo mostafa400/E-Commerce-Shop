@@ -8,6 +8,7 @@ function Navbar() {
   const [storedEmail] = useLocalStorage("email", "");
   const [storedPassword] = useLocalStorage("password", "");
 
+  // to close the mobile menu
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
