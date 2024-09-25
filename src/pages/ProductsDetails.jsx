@@ -18,8 +18,8 @@ function ProductsDetails() {
     <div className="min-h-screen">
       <div className="relative ">
         <img
-          className="h-60 w-full object-cover"
-          src="Images/table.jpg"
+          className="h-60 w-full object-contain"
+          src={product.thumbnail}
           alt={product.title}
         />
         <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div>
