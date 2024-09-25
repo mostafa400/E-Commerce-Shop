@@ -4,6 +4,8 @@ import { useLocalStorage } from "../UseLocalStorage";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
+
 export const DataContext = createContext();
 
 // control the toast notifaction
@@ -24,6 +26,7 @@ const handleToast = (type, message) => {
 };
 
 export const DataProvider = ({ children }) => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -108,7 +111,13 @@ export const DataProvider = ({ children }) => {
       }
       handleToast("success", `${newItem.title} added to cart!`);
     } else {
-      handleToast("error", "Please log in to add items to cart");
+      handleToast(
+        "error",
+        "Please log in to add items to cart. Redirecting..."
+      );
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
     }
   };
   // allowing the user to remove an item from the cart only if he is logged in
@@ -128,7 +137,13 @@ export const DataProvider = ({ children }) => {
         );
       }
     } else {
-      handleToast("error", "Please log in to remove items from cart");
+      handleToast(
+        "error",
+        "Please log in to remove items from cart , Redirecting..."
+      );
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
     }
   };
   // allowing the user to remove the product the cart only if he is logged in
@@ -136,7 +151,13 @@ export const DataProvider = ({ children }) => {
     if (storedEmail && storedPassword) {
       setCart(cart.filter((item) => item.id !== newItem.id));
     } else {
-      handleToast("error", "Please log in to remove products from cart");
+      handleToast(
+        "error",
+        "Please log in to remove products from cart, Redirecting..."
+      );
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
     }
   };
   // to calculate the total price of the cart
